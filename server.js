@@ -3,6 +3,8 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+
+// sets PORT for Heroku, or 3001 if developing on localhost
 const PORT = process.env.PORT || 3001;
 const data = require('./db/db.json');
 const fs = require('fs');
@@ -31,7 +33,7 @@ app.post('/api/notes', (req, res) => {
         const newNote = {
             title,
             text,
-            uuid: uuidv4(),
+            id: uuidv4(),
         };
         fs.readFile('./db/db.json', 'utf8', (err, data) => {
             if (err) console.error(err);
@@ -44,16 +46,35 @@ app.post('/api/notes', (req, res) => {
                     err ? console.error(err) : console.info('Note added successfully!')
                     res.status(201).json(newNote);
                 }
-
             );
         });
-        // const response = {
-        //     status: 'success',
-        //     body: newNote,
-        // };
-        // console.log(response);
     } else {
         res.status(500).json('Error in posting note');
+    }
+});
+
+// if note exists, 
+app.delete('/api/notes/:id', (req, res) => {
+    if (req.params.id) {
+        console.info(`${req.method} request received to delete note ID: ${req.params.id}`);
+        // stores selected note to delete
+        const noteId = req.params.id;
+        fs.readFile('./db/db.json', 'utf8', (err, data) => {
+            const parsedNotes = JSON.parse(data);
+            const updatedNotes = parsedNotes.filter((note) => {
+                //returns notes that have an id that does not match noteId
+                return noteId !== note.id;
+            })
+            //updatedNotes contains new content to write
+            fs.writeFile(
+                './db/db.json', 
+                JSON.stringify(updatedNotes, null, 3), 
+                (err) => {
+                    err ? console.error(err) : console.info('Note deleted successfully!')
+                    res.status(201).json(updatedNotes);
+                }
+            );
+        })
     }
 });
 

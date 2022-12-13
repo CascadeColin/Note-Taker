@@ -1,11 +1,17 @@
 [
    {
-      "title": "Test Title",
-      "text": "Test text"
+      "title": "My First Note",
+      "text": "Here it is",
+      "id": "2d3f6f49-fa6e-41f3-afae-cf1a68c661ad"
    },
    {
-      "title": "make notes clickable",
-      "text": "when clicked, make it active note",
-      "uuid": "7f7be26a-3dec-49a0-9256-3470501bbea7"
+      "title": "My Third Note",
+      "text": "asdfasdfasdf",
+      "id": "bc0135d5-c4a0-42c1-a0b9-5d19c425add0"
+   },
+   {
+      "title": "My Second Note",
+      "text": "asdfasdgasdgasd",
+      "id": "96d28f93-8d21-423f-9a32-c1a6fc84bf0c"
    }
 ]
