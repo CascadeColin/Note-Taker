@@ -53,7 +53,6 @@ app.post('/api/notes', (req, res) => {
     }
 });
 
-// if note exists, 
 app.delete('/api/notes/:id', (req, res) => {
     if (req.params.id) {
         console.info(`${req.method} request received to delete note ID: ${req.params.id}`);
@@ -61,11 +60,11 @@ app.delete('/api/notes/:id', (req, res) => {
         const noteId = req.params.id;
         fs.readFile('./db/db.json', 'utf8', (err, data) => {
             const parsedNotes = JSON.parse(data);
+            // filters out any notes that have an id that matches the query request id
             const updatedNotes = parsedNotes.filter((note) => {
-                //returns notes that have an id that does not match noteId
                 return noteId !== note.id;
             })
-            //updatedNotes contains new content to write
+            // overwrites db.json with new string that has the filtered notes removed
             fs.writeFile(
                 './db/db.json', 
                 JSON.stringify(updatedNotes, null, 3), 
