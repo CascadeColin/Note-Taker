@@ -59,6 +59,7 @@ app.delete('/api/notes/:id', (req, res) => {
         // stores selected note to delete
         const noteId = req.params.id;
         fs.readFile('./db/db.json', 'utf8', (err, data) => {
+            if (err) console.error(err);
             const parsedNotes = JSON.parse(data);
             // filters out any notes that have an id that matches the query request id
             const updatedNotes = parsedNotes.filter((note) => {
