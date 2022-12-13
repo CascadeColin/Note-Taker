@@ -18,7 +18,9 @@ app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/public/notes
 
 app.get('/api/notes', (req, res) => {
     console.info(`${req.method} request received to get notes`);
-    return res.json(data);
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        res.json(JSON.parse(data));
+    });
 });
 
 // destructures existing note, gets body of existing db.json, then rewrites db.json to include newNote object
@@ -38,16 +40,18 @@ app.post('/api/notes', (req, res) => {
             fs.writeFile(
                 './db/db.json', 
                 JSON.stringify(parsedNotes, null, 3), 
-                (err) => err ? console.error(err) : console.info('Note added successfully!')
+                (err) => {
+                    err ? console.error(err) : console.info('Note added successfully!')
+                    res.status(201).json(newNote);
+                }
+
             );
         });
-
-        const response = {
-            status: 'success',
-            body: newNote,
-        };
-        console.log(response);
-        res.status(201).json(response);
+        // const response = {
+        //     status: 'success',
+        //     body: newNote,
+        // };
+        // console.log(response);
     } else {
         res.status(500).json('Error in posting note');
     }

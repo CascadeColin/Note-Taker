@@ -2,5 +2,10 @@
    {
       "title": "Test Title",
       "text": "Test text"
+   },
+   {
+      "title": "make notes clickable",
+      "text": "when clicked, make it active note",
+      "uuid": "7f7be26a-3dec-49a0-9256-3470501bbea7"
    }
 ]
