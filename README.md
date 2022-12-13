@@ -14,15 +14,20 @@
   
 ## Description
 
+Link to the deployed web application: https://colins-note-taker.herokuapp.com/notes
+
 Note Taker is a web application that allows users to write and store notes.  The upper-right corner features a button that allows users to begin a new note.  Upon writing a title and body, a new button will appear allowing them to save the note.  That note will then appear in a list on the left side of the page.  These previously created notes may be viewed by clicking on them, or deleted by clicking on the red trashcan.
+
+Image of the deployed application on the main notes page with a clean console:  
+![Deployed](./public/assets/images/2022-12-13.png)
   
 ## Installation
   
-This application runs in any web browser by visiting <update link>.
+This application runs in any web browser by visiting https://colins-note-taker.herokuapp.com/notes.
   
 ## Usage
   
-Navigate to <update link> in your web browser.  From the home page, click the "Get Started" button and that will take you to your Notes page.  Click the white + symbol on the top right corner of the page to start a new note.  Enter the note title and note text, then click the save icon that will appear next to the + button.  Your note has been saved and will be visible on the left side of your screen.  To access that note, simply click on it.  If the note is no longer needed, you can delete it by clicking on the red trashcan icon.
+Navigate to https://colins-note-taker.herokuapp.com/notes in your web browser.  From the home page, click the "Get Started" button and that will take you to your Notes page.  Click the white + symbol on the top right corner of the page to start a new note.  Enter the note title and note text, then click the save icon that will appear next to the + button.  Your note has been saved and will be visible on the left side of your screen.  To access that note, simply click on it.  If the note is no longer needed, you can delete it by clicking on the red trashcan icon.
   
 ## Contributing
   
